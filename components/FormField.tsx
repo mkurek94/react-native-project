@@ -14,7 +14,7 @@ import { icons } from '../constants';
 interface FormFieldProps {
   title: string;
   value: string;
-  handleChangeText: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
+  handleChangeText: (e: string) => void;
   otherStyles?: string;
   keyboardType?: string;
   placeholder?: string;
@@ -37,7 +37,7 @@ const FormField = ({
           value={value}
           placeholder={placeholder}
           placeholderTextColor="#7b7b8b"
-          onChange={handleChangeText}
+          onChangeText={handleChangeText}
           secureTextEntry={title === 'Password' && !showPassword}
           cursorColor="#FF9C01"
         />
