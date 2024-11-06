@@ -9,7 +9,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useGlobalContext } from "@/context/GlobalProvider";
-import { getAllPosts, getCurrentUser } from "@/lib/appwrite";
+import { getAllPosts, getCurrentUser, getLatestPosts } from "@/lib/appwrite";
 
 import { images } from "../../constants";
 import SearchInput from "@/components/SearchInput";
@@ -22,6 +22,7 @@ import VideoCard from "@/components/VideoCard";
 const Home = () => {
   const { user } = useGlobalContext();
   const { data: posts, isLoading, refetch } = useAppWrite(getAllPosts);
+  const { data: latestPosts } = useAppWrite(getLatestPosts);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
@@ -72,7 +73,7 @@ const Home = () => {
               </Text>
 
               <Trending
-                posts={[{ $id: "1" }, { $id: "2" }, { $id: "3" }] ?? []}
+                posts={latestPosts ?? []}
               />
             </View>
           </View>
