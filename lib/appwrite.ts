@@ -96,3 +96,17 @@ export const getCurrentUser = async () => {
     console.log(error.message);
   }
 };
+
+export const getAllPosts = async () => {
+  try {
+    const posts = await databases.listDocuments(
+      appWriteConfig.databaseId,
+      appWriteConfig.videoColectionId
+    );
+
+    return posts.documents;
+  } catch (error: any) {
+    console.log("getAllPosts error", error.message);
+    throw new Error(error.message);
+  }
+};
