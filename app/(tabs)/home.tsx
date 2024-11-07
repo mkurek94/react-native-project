@@ -62,8 +62,6 @@ const Home = () => {
             </View>
 
             <SearchInput
-              value=""
-              handleChangeText={(e: any) => {}}
               placeholder="Search for a video topic"
             />
 

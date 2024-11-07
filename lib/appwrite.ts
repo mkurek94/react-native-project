@@ -121,7 +121,22 @@ export const getLatestPosts = async () => {
 
     return posts.documents;
   } catch (error: any) {
-    console.log("getAllPosts error", error.message);
+    console.log("getLatestPosts error", error.message);
+    throw new Error(error.message);
+  }
+};
+
+export const searchPosts = async (query: string) => {
+  try {
+    const posts = await databases.listDocuments(
+      appWriteConfig.databaseId,
+      appWriteConfig.videoColectionId,
+      [Query.search('title', query)]
+    );
+
+    return posts.documents;
+  } catch (error: any) {
+    console.log("searchPosts error", error.message);
     throw new Error(error.message);
   }
 };
