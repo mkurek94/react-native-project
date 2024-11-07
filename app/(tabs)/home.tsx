@@ -68,12 +68,12 @@ const Home = () => {
             />
 
             <View className="w-full flex-1 pt-5 pb-8">
-              <Text className="text-gray-100 text-lg font-pregular mb-3">
+              <Text className="text-gray-100 text-lg font-pregular mb-5">
                 Latest Videos
               </Text>
 
               <Trending
-                posts={latestPosts ?? []}
+                posts={latestPosts as any ?? []}
               />
             </View>
           </View>
